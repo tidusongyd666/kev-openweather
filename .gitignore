@@ -44,3 +44,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /.vs/slnx.sqlite
+/.vs/kev-openweather/config/applicationhost.config
