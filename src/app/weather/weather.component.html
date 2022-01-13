@@ -1,0 +1,51 @@
+<mat-card>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field appearance="fill" class="fullWidth">
+        <input matInput placeholder="Search Country" aria-label="Search Country" [matAutocomplete]="auto" [formControl]="selectedCountry">
+        <mat-autocomplete #auto="matAutocomplete" >
+          <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+          <ng-container *ngIf="!isLoading">
+            <mat-option *ngFor="let country of countires" [value]="country.country" (onSelectionChange)="onSelectedCountry(country.country)">
+              <span><b>{{country.country}}</b> </span>
+            </mat-option>
+          </ng-container>
+        </mat-autocomplete>
+      </mat-form-field>
+      <br>
+      <ng-container *ngIf="errorCountry; else elseTemplateCountry">
+        <h5>{{errorCountry}}</h5>
+      </ng-container>
+      <ng-template #elseTemplateCountry>
+        <h5>Selected Country: {{this.form.get('selectedCountry')?.value}}</h5>
+      </ng-template>
+
+      <mat-form-field appearance="fill" class="fullWidth">
+        <input matInput placeholder="Search City" aria-label="Search City" [matAutocomplete]="auto2" [formControl]="selectedCity">
+        <mat-autocomplete #auto2="matAutocomplete" >
+          <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+          <ng-container *ngIf="!isLoading">
+            <mat-option *ngFor="let city of cities" [value]="city.name" (onSelectionChange)="onSelectedCity(city.name)">
+              <span><b>{{city.name}}</b> ({{city.country}}) </span>
+            </mat-option>
+          </ng-container>
+        </mat-autocomplete>
+      </mat-form-field>
+      <br>
+      <ng-container *ngIf="errorCity; else elseTemplateCity">
+        <h5>{{errorCity}}</h5>
+      </ng-container>
+      <ng-template #elseTemplateCity>
+        <h5>Selected City: {{this.form.get('selectedCity')?.value}}</h5>
+      </ng-template>
+
+      <div class="mat-form-field-wrapper mat-form-field fullWidth">
+        <mat-checkbox formControlName="unlimited" >
+          Tick here for unlimiated weather report!
+        </mat-checkbox>
+      </div>  
+
+      <button mat-raised-button color="primary" [disabled]="!form.valid || !selectedCountry.valid || !selectedCity.valid">Check</button>
+
+  </form>
+</mat-card>
