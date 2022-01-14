@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private baseURL = 'https://api-kev-weather-ae66.azurewebsites.net/api/v1';
   private x_clientId_no_limit = 'cl-key-no-limit';
-  private x_clientId_rate_limit = 'cl-key-1';
+  private x_clientId_rate_limit = 'cl-key-5';
 
   constructor(private _http:HttpClient) { 
 
