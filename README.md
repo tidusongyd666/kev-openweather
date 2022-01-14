@@ -38,6 +38,7 @@ src/                         project source code
  - Clone or donwload project
  - Open folder kev-openweather by Visual Studio Code
  - In the terminal run below commands
+   - `npm install`  - Install all depedencies
    - `npm run build` - Build app in `dist/` folder
    - `npm run build-prod` - Build app for production in `dist/` folder
    - `npm run start` - Start a dev server and opens browser with running app on http://localhost:4202
